@@ -1,0 +1,21 @@
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+public class DataTest {
+
+    @Test
+    public void testCriacaoDataInvalida() {
+        assertThrows(ExcecaoDataInvalida.class, () -> {
+            Data data = new Data(2022, 2, 29); // 2022 não é um ano bissexto
+        });
+    }
+
+    @Test
+    public void testCriacaoDataComMesInvalido() {
+        // Verifica se a ExcecaoDataInvalida é lançada ao criar uma data com um mês inválido
+        assertThrows(ExcecaoDataInvalida.class, () -> {
+            Data data = new Data(2024, 13, 15); // Mês inválido: 13
+        });
+    }
+}
